@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://byo2eoofptdf"]
+
+[ext_resource type="Script" uid="uid://d38sxe1rjnhhw" path="res://Scripts/Teste.cs" id="1_2gqm3"]
+[ext_resource type="Texture2D" uid="uid://bg3jwh0mqsuhr" path="res://assets/Character/palmerense.png" id="2_3r2dd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dp01m"]
+size = Vector2(176, 169.5)
+
+[node name="Teste" type="Node2D"]
+
+[node name="Penis" type="CharacterBody2D" parent="."]
+position = Vector2(576, 324)
+script = ExtResource("1_2gqm3")
+
+[node name="Colisao" type="CollisionShape2D" parent="Penis"]
+shape = SubResource("RectangleShape2D_dp01m")
+disabled = true
+
+[node name="Sprite" type="Sprite2D" parent="Penis/Colisao"]
+scale = Vector2(5.5, 5.25)
+texture = ExtResource("2_3r2dd")

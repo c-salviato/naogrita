@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bg3jwh0mqsuhr"
-path="res://.godot/imported/palmerense.png-7ce7c0c32f197df999e29946a7b07421.ctex"
+uid="uid://dxnlhfljaq6ha"
+path="res://.godot/imported/pixil-frame-0.png-5cb607d9312d657616d5529ca8aa5e4b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/palmerense.png"
-dest_files=["res://.godot/imported/palmerense.png-7ce7c0c32f197df999e29946a7b07421.ctex"]
+source_file="res://assets/Cursor/pixil-frame-0.png"
+dest_files=["res://.godot/imported/pixil-frame-0.png-5cb607d9312d657616d5529ca8aa5e4b.ctex"]
 
 [params]
 
