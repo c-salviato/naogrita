@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://u7hn5bbp0dsl"]
+
+[ext_resource type="Texture2D" uid="uid://3mdcxqykjwd8" path="res://assets/Character/Penis.png" id="1_425qn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7ray"]
+atlas = ExtResource("1_425qn")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4pi4"]
+atlas = ExtResource("1_425qn")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0k2sd"]
+atlas = ExtResource("1_425qn")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mplj"]
+atlas = ExtResource("1_425qn")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hqhjr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7ray")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4pi4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0k2sd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mplj")
+}],
+"loop": true,
+"name": &"buceta",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 1)
+sprite_frames = SubResource("SpriteFrames_hqhjr")
+animation = &"buceta"
+frame = 1
+frame_progress = 0.004375769
