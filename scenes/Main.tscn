@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dptb4nrmwmaox"]
+[gd_scene load_steps=8 format=3 uid="uid://dptb4nrmwmaox"]
 
 [ext_resource type="Script" uid="uid://c35ya6rknkaf7" path="res://Scripts/Character.cs" id="1_rvslj"]
 [ext_resource type="Texture2D" uid="uid://bg3jwh0mqsuhr" path="res://assets/Character/palmerense.png" id="2_0bbpv"]
 [ext_resource type="Script" uid="uid://5v3g44v7kqql" path="res://Scripts/IterateObject.cs" id="3_rarhs"]
 [ext_resource type="Texture2D" uid="uid://bwkiq44ehrrry" path="res://icon.svg" id="4_vcsgt"]
+[ext_resource type="Script" uid="uid://bafg2om885et3" path="res://Cadeia.cs" id="5_c01mt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_74lek"]
 size = Vector2(176, 169.5)
@@ -37,6 +38,20 @@ texture = ExtResource("4_vcsgt")
 [node name="Colisao" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_c01mt")
 
+[node name="Cadeia" type="Area2D" parent="."]
+position = Vector2(300, 159)
+script = ExtResource("5_c01mt")
+
+[node name="SpriteCadeia" type="Sprite2D" parent="Cadeia"]
+z_index = -1
+texture = ExtResource("4_vcsgt")
+
+[node name="ColisaoCadeia" type="CollisionShape2D" parent="Cadeia"]
+shape = SubResource("RectangleShape2D_c01mt")
+
 [connection signal="input_event" from="Area2D" to="Area2D" method="OnInputEvent"]
 [connection signal="mouse_entered" from="Area2D" to="Area2D" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="Area2D" to="Area2D" method="OnMouseExited"]
+[connection signal="input_event" from="Cadeia" to="Cadeia" method="OnInputEvent"]
+[connection signal="mouse_entered" from="Cadeia" to="Cadeia" method="OnMouseEntered"]
+[connection signal="mouse_exited" from="Cadeia" to="Cadeia" method="OnMouseExited"]
