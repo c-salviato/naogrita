@@ -7,21 +7,27 @@ public partial class IterateObject : Area2D
 	private Font _defaultFont;
 	private String texto = "";
 	private Vector2 _posicaoMouseGlobal = Vector2.Zero;
+	private Texture2D _mao;
+	private readonly Vector2 sizeImg = new Vector2(32, 32);
 	
 	public override void _Ready()
 	{
 		_defaultFont = GD.Load<Font>("res://seu_caminho/sua_fonte.ttf") ?? ThemeDB.FallbackFont;
+		_mao = GD.Load<Texture2D>("res://assets/Cursor/Porno.png");
+		
+
 		
 		ZIndex = 1000;
 		
 		QueueRedraw();
 	}
 	
+	
 	public override void _Process(double delta)
 	{
 		_posicaoMouseGlobal = GetViewport().GetMousePosition();
 		
-		if (texto != "")
+		if (!string.IsNullOrEmpty(texto))
 		{
 			QueueRedraw();
 		}
@@ -37,6 +43,7 @@ public partial class IterateObject : Area2D
 		QueueRedraw();
 		//SetDefaultCursorShape
 		Input.SetDefaultCursorShape(Input.CursorShape.PointingHand);
+		Input.SetCustomMouseCursor(_mao, Input.CursorShape.PointingHand, new Vector2(16, 16));
 	}
 	
 	public void OnMouseExited()
@@ -51,16 +58,17 @@ public partial class IterateObject : Area2D
 	
 	public void OnInputEvent(Node viewport, InputEvent @event, long shapeIdx)
 	{
+		
 		//Verifica se foi clicado
 		if (@event.IsActionPressed("mouse1_click"))
 		{
 			GD.Print("Objeto foi clicado");
-			_Acao();
+			Acao();
 		}
 	}
 	
 	
-	public void _Acao()
+	public void Acao()
 	{
 		//Nome Auto Explicativo por padrao vai fazer algo =O
 		
