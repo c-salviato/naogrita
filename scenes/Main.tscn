@@ -1,41 +1,61 @@
-[gd_scene load_steps=7 format=3 uid="uid://dptb4nrmwmaox"]
+[gd_scene load_steps=10 format=4 uid="uid://dptb4nrmwmaox"]
 
 [ext_resource type="Script" uid="uid://c35ya6rknkaf7" path="res://Scripts/Character.cs" id="1_rvslj"]
+[ext_resource type="Texture2D" uid="uid://cwf05gboxjkyc" path="res://assets/tileset16x16.png" id="1_vcsgt"]
 [ext_resource type="Texture2D" uid="uid://bg3jwh0mqsuhr" path="res://assets/Character/palmerense.png" id="2_0bbpv"]
 [ext_resource type="Script" uid="uid://5v3g44v7kqql" path="res://Scripts/IterateObject.cs" id="3_rarhs"]
 [ext_resource type="Texture2D" uid="uid://bwkiq44ehrrry" path="res://icon.svg" id="4_vcsgt"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_74lek"]
-size = Vector2(176, 169.5)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vcsgt"]
+texture = ExtResource("1_vcsgt")
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_c01mt"]
+sources/0 = SubResource("TileSetAtlasSource_vcsgt")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c01mt"]
 size = Vector2(132, 128)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_74lek"]
+size = Vector2(176, 169.5)
+
 [node name="Node2D" type="Node2D"]
 
-[node name="Character" type="CharacterBody2D" parent="."]
-script = ExtResource("1_rvslj")
-
-[node name="Sprite" type="Sprite2D" parent="Character"]
-position = Vector2(576, 445)
-scale = Vector2(5.5, 5.25)
-texture = ExtResource("2_0bbpv")
-
-[node name="Colisao" type="CollisionShape2D" parent="Character"]
-position = Vector2(577, 444)
-shape = SubResource("RectangleShape2D_74lek")
-disabled = true
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(240.00002, 0)
+scale = Vector2(15, 15)
+tile_map_data = PackedByteArray("AAD//wAAAAABAAAAAAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAAAAAAAFAAAAAAABAAAAAAAGAAAAAAABAAAAAAD//wEAAAABAAAAAAAAAAEAAAABAAAAAAABAAEAAAABAAAAAAACAAEAAAABAAAAAAADAAEAAAABAAAAAAAEAAEAAAABAAAAAAAFAAEAAAABAAAAAAAGAAEAAAABAAAAAAD//wIAAAAAAAEAAAAAAAIAAAAAAAEAAAABAAIAAAAAAAEAAAACAAIAAAAAAAEAAAADAAIAAAAAAAEAAAAEAAIAAAAAAAEAAAAFAAIAAAAAAAEAAAAGAAIAAAAAAAEAAAD//wMAAAABAAEAAAAAAAMAAAABAAEAAAABAAMAAAABAAEAAAACAAMAAAABAAEAAAADAAMAAAABAAEAAAAEAAMAAAABAAEAAAAFAAMAAAABAAEAAAAGAAMAAAABAAEAAAA=")
+tile_set = SubResource("TileSet_c01mt")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 position = Vector2(300, 159)
 script = ExtResource("3_rarhs")
 
 [node name="SpriteObj" type="Sprite2D" parent="Area2D"]
 z_index = -1
+position = Vector2(258, 77)
 texture = ExtResource("4_vcsgt")
 
 [node name="Colisao" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(258, 76)
 shape = SubResource("RectangleShape2D_c01mt")
+
+[node name="Character" type="CharacterBody2D" parent="."]
+visible = false
+script = ExtResource("1_rvslj")
+
+[node name="Sprite" type="Sprite2D" parent="Character"]
+position = Vector2(1210, 410)
+scale = Vector2(5.5, 5.25)
+texture = ExtResource("2_0bbpv")
+
+[node name="Colisao" type="CollisionShape2D" parent="Character"]
+position = Vector2(1208, 409)
+shape = SubResource("RectangleShape2D_74lek")
+disabled = true
 
 [connection signal="input_event" from="Area2D" to="Area2D" method="OnInputEvent"]
 [connection signal="mouse_entered" from="Area2D" to="Area2D" method="OnMouseEntered"]
