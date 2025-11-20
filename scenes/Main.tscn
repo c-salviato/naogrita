@@ -1,11 +1,22 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=11 format=4 uid="uid://dptb4nrmwmaox"]
+=======
+[gd_scene load_steps=16 format=4 uid="uid://dptb4nrmwmaox"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Script" uid="uid://c35ya6rknkaf7" path="res://Scripts/Character.cs" id="1_rvslj"]
 [ext_resource type="Texture2D" uid="uid://cwf05gboxjkyc" path="res://assets/tileset16x16.png" id="1_vcsgt"]
 [ext_resource type="Script" uid="uid://5v3g44v7kqql" path="res://Scripts/IterateObject.cs" id="3_rarhs"]
 [ext_resource type="Texture2D" uid="uid://bwkiq44ehrrry" path="res://icon.svg" id="4_vcsgt"]
+<<<<<<< Updated upstream
 [ext_resource type="Texture2D" uid="uid://7yy2u1m2vtj7" path="res://assets/Character/New Piskel (6).png" id="5_vcsgt"]
 [ext_resource type="Script" uid="uid://bafg2om885et3" path="res://Cadeia.cs" id="6_c01mt"]
+=======
+[ext_resource type="Texture2D" uid="uid://d074bye3kd3al" path="res://assets/ObjetosInteragidos/notepad.png" id="6_c01mt"]
+[ext_resource type="Script" uid="uid://c4c1v2codkr4d" path="res://Scripts/NotePadPopUp.cs" id="6_nxtc6"]
+[ext_resource type="Script" uid="uid://bgc0crb5r26k4" path="res://scenes/NotePad.cs" id="8_q8u5g"]
+[ext_resource type="Texture2D" uid="uid://od1bv4d15bcq" path="res://assets/ObjetosCena/notepad_cena.png" id="9_lhr70"]
+>>>>>>> Stashed changes
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vcsgt"]
 texture = ExtResource("1_vcsgt")
@@ -21,6 +32,12 @@ size = Vector2(132, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_74lek"]
 size = Vector2(176, 169.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nxtc6"]
+size = Vector2(749.75, 720)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wp0k4"]
+size = Vector2(140, 130)
 
 [node name="Node2D" type="Node2D"]
 
@@ -41,23 +58,23 @@ position = Vector2(258, 77)
 texture = ExtResource("4_vcsgt")
 
 [node name="Colisao" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(258, 76)
+position = Vector2(741, 375)
 shape = SubResource("RectangleShape2D_c01mt")
 
 [node name="Character" type="CharacterBody2D" parent="."]
-visible = false
 script = ExtResource("1_rvslj")
 
 [node name="Sprite" type="Sprite2D" parent="Character"]
-position = Vector2(1210, 410)
+position = Vector2(1033, 523)
 scale = Vector2(5.5, 5.25)
 texture = ExtResource("5_vcsgt")
 
 [node name="Colisao" type="CollisionShape2D" parent="Character"]
-position = Vector2(1208, 409)
+position = Vector2(1036, 527)
 shape = SubResource("RectangleShape2D_74lek")
 disabled = true
 
+<<<<<<< Updated upstream
 [node name="Cadeia" type="Area2D" parent="."]
 position = Vector2(500, 159)
 script = ExtResource("6_c01mt")
@@ -70,6 +87,32 @@ texture = ExtResource("4_vcsgt")
 [node name="Colisao" type="CollisionShape2D" parent="Cadeia"]
 position = Vector2(258, 76)
 shape = SubResource("RectangleShape2D_c01mt")
+=======
+[node name="NotePadPopUp" type="Area2D" parent="."]
+script = ExtResource("6_nxtc6")
+
+[node name="Sprite2D" type="Sprite2D" parent="NotePadPopUp"]
+position = Vector2(946.00006, 433.00003)
+scale = Vector2(15, 15)
+texture = ExtResource("6_c01mt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NotePadPopUp"]
+position = Vector2(946, 478)
+shape = SubResource("RectangleShape2D_nxtc6")
+
+[node name="NotePad" type="Area2D" parent="."]
+position = Vector2(-33, -77)
+script = ExtResource("8_q8u5g")
+
+[node name="Sprite2D" type="Sprite2D" parent="NotePad"]
+position = Vector2(1719, 548.00006)
+scale = Vector2(10, 10)
+texture = ExtResource("9_lhr70")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NotePad"]
+position = Vector2(1719, 553)
+shape = SubResource("RectangleShape2D_wp0k4")
+>>>>>>> Stashed changes
 
 [connection signal="input_event" from="Area2D" to="Area2D" method="OnInputEvent"]
 [connection signal="mouse_entered" from="Area2D" to="Area2D" method="OnMouseEntered"]

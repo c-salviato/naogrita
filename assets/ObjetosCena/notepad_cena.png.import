@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csgy8sbco1bsp"
-path="res://.godot/imported/TileSet.png-f1ff00c4ae4d01a00cb9c5bc4f57ef1d.ctex"
+uid="uid://od1bv4d15bcq"
+path="res://.godot/imported/notepad_cena.png-3bc20adfd0e872adc624bfc19d206f07.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/TileSet.png"
-dest_files=["res://.godot/imported/TileSet.png-f1ff00c4ae4d01a00cb9c5bc4f57ef1d.ctex"]
+source_file="res://assets/ObjetosCena/notepad_cena.png"
+dest_files=["res://.godot/imported/notepad_cena.png-3bc20adfd0e872adc624bfc19d206f07.ctex"]
 
 [params]
 
