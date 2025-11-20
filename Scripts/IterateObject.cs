@@ -3,6 +3,8 @@ using System;
 
 public partial class IterateObject : Area2D
 {
+	[Export]
+	public String textoCustom {get; set; } = "Objeto";
 	
 	private Font _defaultFont;
 	private String texto = "";
@@ -39,7 +41,7 @@ public partial class IterateObject : Area2D
 	{
 		GD.Print("Ta na area do objeto");
 		//Detecta que o Mouse entrou na area do objeto e muda o cursor de acordo
-		texto = "Objeto";
+		texto = textoCustom;
 		QueueRedraw();
 		//SetDefaultCursorShape
 		Input.SetDefaultCursorShape(Input.CursorShape.PointingHand);
@@ -68,7 +70,7 @@ public partial class IterateObject : Area2D
 	}
 	
 	
-	public void Acao()
+	public virtual void Acao()
 	{
 		//Nome Auto Explicativo por padrao vai fazer algo =O
 		

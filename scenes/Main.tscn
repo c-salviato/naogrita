@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://dptb4nrmwmaox"]
+[gd_scene load_steps=11 format=4 uid="uid://dptb4nrmwmaox"]
 
 [ext_resource type="Script" uid="uid://c35ya6rknkaf7" path="res://Scripts/Character.cs" id="1_rvslj"]
 [ext_resource type="Texture2D" uid="uid://cwf05gboxjkyc" path="res://assets/tileset16x16.png" id="1_vcsgt"]
-[ext_resource type="Texture2D" uid="uid://bg3jwh0mqsuhr" path="res://assets/Character/palmerense.png" id="2_0bbpv"]
 [ext_resource type="Script" uid="uid://5v3g44v7kqql" path="res://Scripts/IterateObject.cs" id="3_rarhs"]
 [ext_resource type="Texture2D" uid="uid://bwkiq44ehrrry" path="res://icon.svg" id="4_vcsgt"]
+[ext_resource type="Texture2D" uid="uid://7yy2u1m2vtj7" path="res://assets/Character/New Piskel (6).png" id="5_vcsgt"]
+[ext_resource type="Script" uid="uid://bafg2om885et3" path="res://Cadeia.cs" id="6_c01mt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vcsgt"]
 texture = ExtResource("1_vcsgt")
@@ -24,13 +25,13 @@ size = Vector2(176, 169.5)
 [node name="Node2D" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+visible = false
 position = Vector2(240.00002, 0)
 scale = Vector2(15, 15)
 tile_map_data = PackedByteArray("AAD//wAAAAABAAAAAAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAAAAAAAFAAAAAAABAAAAAAAGAAAAAAABAAAAAAD//wEAAAABAAAAAAAAAAEAAAABAAAAAAABAAEAAAABAAAAAAACAAEAAAABAAAAAAADAAEAAAABAAAAAAAEAAEAAAABAAAAAAAFAAEAAAABAAAAAAAGAAEAAAABAAAAAAD//wIAAAAAAAEAAAAAAAIAAAAAAAEAAAABAAIAAAAAAAEAAAACAAIAAAAAAAEAAAADAAIAAAAAAAEAAAAEAAIAAAAAAAEAAAAFAAIAAAAAAAEAAAAGAAIAAAAAAAEAAAD//wMAAAABAAEAAAAAAAMAAAABAAEAAAABAAMAAAABAAEAAAACAAMAAAABAAEAAAADAAMAAAABAAEAAAAEAAMAAAABAAEAAAAFAAMAAAABAAEAAAAGAAMAAAABAAEAAAA=")
 tile_set = SubResource("TileSet_c01mt")
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
 position = Vector2(300, 159)
 script = ExtResource("3_rarhs")
 
@@ -50,13 +51,29 @@ script = ExtResource("1_rvslj")
 [node name="Sprite" type="Sprite2D" parent="Character"]
 position = Vector2(1210, 410)
 scale = Vector2(5.5, 5.25)
-texture = ExtResource("2_0bbpv")
+texture = ExtResource("5_vcsgt")
 
 [node name="Colisao" type="CollisionShape2D" parent="Character"]
 position = Vector2(1208, 409)
 shape = SubResource("RectangleShape2D_74lek")
 disabled = true
 
+[node name="Cadeia" type="Area2D" parent="."]
+position = Vector2(500, 159)
+script = ExtResource("6_c01mt")
+
+[node name="SpriteObj" type="Sprite2D" parent="Cadeia"]
+z_index = -1
+position = Vector2(258, 77)
+texture = ExtResource("4_vcsgt")
+
+[node name="Colisao" type="CollisionShape2D" parent="Cadeia"]
+position = Vector2(258, 76)
+shape = SubResource("RectangleShape2D_c01mt")
+
 [connection signal="input_event" from="Area2D" to="Area2D" method="OnInputEvent"]
 [connection signal="mouse_entered" from="Area2D" to="Area2D" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="Area2D" to="Area2D" method="OnMouseExited"]
+[connection signal="input_event" from="Cadeia" to="Cadeia" method="OnInputEvent"]
+[connection signal="mouse_entered" from="Cadeia" to="Cadeia" method="OnMouseEntered"]
+[connection signal="mouse_exited" from="Cadeia" to="Cadeia" method="OnMouseExited"]
