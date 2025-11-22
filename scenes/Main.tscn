@@ -1,15 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://dptb4nrmwmaox"]
+[gd_scene load_steps=11 format=3 uid="uid://dptb4nrmwmaox"]
 
 [ext_resource type="Script" uid="uid://c35ya6rknkaf7" path="res://scripts/Character.cs" id="1_rvslj"]
 [ext_resource type="Texture2D" uid="uid://bg3jwh0mqsuhr" path="res://assets/Character/palmerense.png" id="2_0bbpv"]
 [ext_resource type="Script" uid="uid://5v3g44v7kqql" path="res://scripts/IterateObject.cs" id="3_rarhs"]
 [ext_resource type="Texture2D" uid="uid://bwkiq44ehrrry" path="res://icon.svg" id="4_vcsgt"]
+[ext_resource type="PackedScene" uid="uid://bulheiabmyr52" path="res://PreFabs/CadernoPopup.tscn" id="6_jlsqs"]
+[ext_resource type="Script" uid="uid://uqpxvnkjxrhl" path="res://scenes/WorldObject.cs" id="6_nxtc6"]
+[ext_resource type="Texture2D" uid="uid://od1bv4d15bcq" path="res://assets/ObjetosCena/notepad_cena.png" id="7_q8u5g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_74lek"]
 size = Vector2(176, 169.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c01mt"]
 size = Vector2(132, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lhr70"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -36,6 +41,22 @@ texture = ExtResource("4_vcsgt")
 
 [node name="Colisao" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_c01mt")
+
+[node name="Objeto_Caderno" type="Area2D" parent="." node_paths=PackedStringArray("UiLayerRef")]
+position = Vector2(119, 93)
+script = ExtResource("6_nxtc6")
+InspectSceneToLoad = ExtResource("6_jlsqs")
+UiLayerRef = NodePath("../Node2D/UILayer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objeto_Caderno"]
+shape = SubResource("RectangleShape2D_lhr70")
+
+[node name="Sprite2D" type="Sprite2D" parent="Objeto_Caderno"]
+texture = ExtResource("7_q8u5g")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="UILayer" type="CanvasLayer" parent="Node2D"]
 
 [connection signal="input_event" from="Area2D" to="Area2D" method="OnInputEvent"]
 [connection signal="mouse_entered" from="Area2D" to="Area2D" method="OnMouseEntered"]
