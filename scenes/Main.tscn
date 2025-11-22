@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://dptb4nrmwmaox"]
 
-[ext_resource type="Script" uid="uid://c35ya6rknkaf7" path="res://Scripts/Character.cs" id="1_rvslj"]
+[ext_resource type="Script" uid="uid://c35ya6rknkaf7" path="res://scripts/Character.cs" id="1_rvslj"]
 [ext_resource type="Texture2D" uid="uid://bg3jwh0mqsuhr" path="res://assets/Character/palmerense.png" id="2_0bbpv"]
-[ext_resource type="Script" uid="uid://5v3g44v7kqql" path="res://Scripts/IterateObject.cs" id="3_rarhs"]
+[ext_resource type="Script" uid="uid://5v3g44v7kqql" path="res://scripts/IterateObject.cs" id="3_rarhs"]
 [ext_resource type="Texture2D" uid="uid://bwkiq44ehrrry" path="res://icon.svg" id="4_vcsgt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_74lek"]
