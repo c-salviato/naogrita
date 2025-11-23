@@ -4,20 +4,21 @@ using System;
 public partial class IterateObject : Area2D
 {
 	
-	private Font _defaultFont;
+	public Font _defaultFont;
+	public String textoCustom = "Objeto";
 	private String texto = "";
 	private Vector2 _posicaoMouseGlobal = Vector2.Zero;
-	private Texture2D _mao;
+	public Texture2D _mao;
 	private readonly Vector2 sizeImg = new Vector2(32, 32);
 	
 	public override void _Ready()
 	{
 		_defaultFont = GD.Load<Font>("res://seu_caminho/sua_fonte.ttf") ?? ThemeDB.FallbackFont;
-		_mao = GD.Load<Texture2D>("res://assets/Cursor/Porno.png");
-		
-
-		
+		_mao = GD.Load<Texture2D>("res://assets/Cursor/CursorPegar.png");
 		ZIndex = 1000;
+		this.MouseEntered += OnMouseEntered;
+		this.MouseExited += OnMouseExited;
+		this.InputEvent += OnInputEvent;
 		
 		QueueRedraw();
 	}
@@ -39,7 +40,7 @@ public partial class IterateObject : Area2D
 	{
 		GD.Print("Ta na area do objeto");
 		//Detecta que o Mouse entrou na area do objeto e muda o cursor de acordo
-		texto = "Objeto";
+		texto = textoCustom;
 		QueueRedraw();
 		//SetDefaultCursorShape
 		Input.SetDefaultCursorShape(Input.CursorShape.PointingHand);
@@ -68,7 +69,7 @@ public partial class IterateObject : Area2D
 	}
 	
 	
-	public void Acao()
+	public virtual void Acao()
 	{
 		//Nome Auto Explicativo por padrao vai fazer algo =O
 		
@@ -80,14 +81,14 @@ public partial class IterateObject : Area2D
 		if (_defaultFont != null)
 		{
 			Vector2 posicaoTexto = ToLocal(_posicaoMouseGlobal);
-			posicaoTexto.Y -= 5;
+			posicaoTexto.Y -= 10;
 			posicaoTexto.X -= 45; 
 			DrawString(_defaultFont, 
 					   posicaoTexto, 
 					   texto, 
 					   HorizontalAlignment.Center, 
 					   90, 
-					   22, 
+					   8, 
 					   Colors.Red);
 		}
 	}

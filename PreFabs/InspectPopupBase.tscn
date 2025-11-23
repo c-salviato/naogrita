@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c1oqucfd4q1wv"]
 
-[ext_resource type="Script" uid="uid://buhj6usqaxbcw" path="res://scenes/InspectPopupBase.cs" id="1_4g1lx"]
+[ext_resource type="Script" uid="uid://buhj6usqaxbcw" path="res://Scripts/InspectPopupBase.cs" id="1_4g1lx"]
 
 [node name="InspectPopupBase" type="Control"]
 layout_mode = 3

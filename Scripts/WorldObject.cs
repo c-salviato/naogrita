@@ -1,18 +1,17 @@
 using Godot;
 
-public partial class WorldObject : Area2D
+public partial class WorldObject : IterateObject
 {
-	// 1. Criamos um espaço para arrastar a cena do POPUP
 	[Export] public PackedScene InspectSceneToLoad;
-
-	// 2. MUDANÇA AQUI: Criamos um espaço para arrastar a UILAYER
+	
 	// Em vez de procurar por texto, vamos referenciar direto
 	[Export] public CanvasLayer UiLayerRef; 
-
+	
 	public override void _Ready()
 	{
-		// 3. Apague a linha antiga do "_mainUiLayer = ..."
-		// Não precisamos fazer nada aqui no _Ready, pois vamos configurar no Editor
+		textoCustom = "Caderno";
+		base._Ready();
+		
 		
 		InputEvent += OnInputEvent;
 	}
@@ -45,6 +44,20 @@ public partial class WorldObject : Area2D
 		if (popupInstance != null)
 		{
 			// Agora usamos a referência que arrastamos
+			UiLayerRef.AddChild(popupInstance);
+		}
+		
+		// 2. Encontra o Personagem (usando o nó principal da cena, por exemplo)
+		// OBS: O caminho de nó ":/root/Game/Player" é um exemplo. Ajuste conforme sua cena.
+		Character player = GetTree().Root.GetNode<Character>("Node2D/Character");
+		if (popupInstance != null && player != null)
+		{
+			// ⭐️ CHAMA O MÉTODO PARA PARAR O MOVIMENTO
+			player.EstadoPopup(true);
+			
+			// 3. Conecta o sinal de fechamento do popup ao método de restauração do movimento.
+			popupInstance.OnClose += () => player.EstadoPopup(false);
+			// 4. Adiciona à cena
 			UiLayerRef.AddChild(popupInstance);
 		}
 	}

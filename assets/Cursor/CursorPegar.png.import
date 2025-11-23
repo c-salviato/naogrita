@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxnlhfljaq6ha"
-path="res://.godot/imported/pixil-frame-0.png-5cb607d9312d657616d5529ca8aa5e4b.ctex"
+uid="uid://budiwuyso76no"
+path="res://.godot/imported/CursorPegar.png-41a9128d51762c239f0acf96c6572284.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Cursor/pixil-frame-0.png"
-dest_files=["res://.godot/imported/pixil-frame-0.png-5cb607d9312d657616d5529ca8aa5e4b.ctex"]
+source_file="res://assets/Cursor/CursorPegar.png"
+dest_files=["res://.godot/imported/CursorPegar.png-41a9128d51762c239f0acf96c6572284.ctex"]
 
 [params]
 

@@ -3,6 +3,7 @@ using Godot;
 public partial class Character : CharacterBody2D
 {
 	public int Speed { get; set; } = 150;
+	public bool emPopup { get; set; } = false;
 
 	private Sprite2D _sprite;
 
@@ -46,9 +47,19 @@ public partial class Character : CharacterBody2D
 			}
 		}
 	}
-
+	
+	
+	public void EstadoPopup(bool estado)
+	{
+		emPopup = estado;
+	}
+	
 	public override void _PhysicsProcess(double delta)
 	{
+		if(emPopup)
+		{
+			return;
+		}
 		GetInput();
 		MoveAndSlide();
 	}

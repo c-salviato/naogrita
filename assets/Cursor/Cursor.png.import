@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://budiwuyso76no"
-path="res://.godot/imported/Porno.png-432cd0ebadcc7d67e3be132c8f69cbc1.ctex"
+uid="uid://dxnlhfljaq6ha"
+path="res://.godot/imported/Cursor.png-100c1443e01f0a8dfce7572e6dd88de4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Cursor/Porno.png"
-dest_files=["res://.godot/imported/Porno.png-432cd0ebadcc7d67e3be132c8f69cbc1.ctex"]
+source_file="res://assets/Cursor/Cursor.png"
+dest_files=["res://.godot/imported/Cursor.png-100c1443e01f0a8dfce7572e6dd88de4.ctex"]
 
 [params]
 

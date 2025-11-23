@@ -9,6 +9,7 @@ public partial class InspectPopupBase : Control
 	{
 		// Conecta o botão de fechar (supondo que o nome do nó seja "CloseButton")
 		GetNode<Button>("CloseButton").Pressed += ClosePopup;
+		
 	}
 
 	public virtual void ClosePopup()
