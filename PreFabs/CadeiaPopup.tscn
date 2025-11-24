@@ -1,10 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://dm21shoihpgv6"]
+[gd_scene load_steps=14 format=3 uid="uid://dm21shoihpgv6"]
 
-[ext_resource type="Script" uid="uid://buhj6usqaxbcw" path="res://Scripts/InspectPopupBase.cs" id="1_64uqi"]
+[ext_resource type="Script" uid="uid://bbeapopgonu3a" path="res://scripts/CadeiaPopup.cs" id="1_mqj1v"]
 [ext_resource type="Texture2D" uid="uid://xtrm16qfjj21" path="res://assets/ObjetosInteragidos/pixil-frame-0 (3).png" id="2_3qsel"]
 [ext_resource type="Texture2D" uid="uid://bwkiq44ehrrry" path="res://icon.svg" id="2_y1vva"]
+[ext_resource type="Texture2D" uid="uid://dvhjegamql6l5" path="res://assets/ObjetosInteragidos/botoes/1.png" id="4_mqj1v"]
+[ext_resource type="Texture2D" uid="uid://dp7br0w2hwo1b" path="res://assets/ObjetosInteragidos/botoes/2.png" id="5_k8f7j"]
+[ext_resource type="Texture2D" uid="uid://d14u3gt82phi7" path="res://assets/ObjetosInteragidos/botoes/3.png" id="6_r1hgf"]
+[ext_resource type="Texture2D" uid="uid://o4nxbwwa6f8r" path="res://assets/ObjetosInteragidos/botoes/4.png" id="7_57d6l"]
+[ext_resource type="Texture2D" uid="uid://bb5veur7wjuq7" path="res://assets/ObjetosInteragidos/botoes/5.png" id="8_24eg0"]
+[ext_resource type="Texture2D" uid="uid://dej4jf8kxxtfn" path="res://assets/ObjetosInteragidos/botoes/6.png" id="9_el2sf"]
+[ext_resource type="Texture2D" uid="uid://du1chof8pqhsr" path="res://assets/ObjetosInteragidos/botoes/7.png" id="10_3h33e"]
+[ext_resource type="Texture2D" uid="uid://b7svjhai1oe3x" path="res://assets/ObjetosInteragidos/botoes/8.png" id="11_e7v70"]
+[ext_resource type="Texture2D" uid="uid://b4c80yrmtw8vi" path="res://assets/ObjetosInteragidos/botoes/9.png" id="12_1pjvv"]
+[ext_resource type="Texture2D" uid="uid://dwbis0hs16ji0" path="res://assets/ObjetosInteragidos/botoes/0.png" id="13_3ex58"]
 
-[node name="InspectPopupBase" type="Control"]
+[node name="CadeiaPopup" type="Control"]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -20,7 +30,7 @@ grow_vertical = 2
 pivot_offset = Vector2(-416, -245)
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1_64uqi")
+script = ExtResource("1_mqj1v")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -67,11 +77,100 @@ grow_vertical = 2
 rotation = -1.5707964
 text = "X"
 
-[node name="TextureRect" type="TextureRect" parent="."]
-z_index = 1
+[node name="KeyPad" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = -518.0
-offset_top = -330.0
-offset_right = -324.0
-offset_bottom = -167.0
+offset_left = -509.0
+offset_top = -343.0
+offset_right = -445.0
+offset_bottom = -279.0
+scale = Vector2(3, 3)
 texture = ExtResource("2_3qsel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="KeyPad"]
+layout_mode = 0
+offset_left = 11.666667
+offset_top = 18.333334
+offset_right = 177.66667
+offset_bottom = 157.33333
+scale = Vector2(0.25, 0.25)
+theme_override_constants/separation = 42
+
+[node name="DisplayContainer" type="HBoxContainer" parent="KeyPad/VBoxContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+alignment = 1
+
+[node name="BotoesContainer" type="GridContainer" parent="KeyPad/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 5
+
+[node name="Button1" type="Button" parent="KeyPad/VBoxContainer/BotoesContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+icon = ExtResource("4_mqj1v")
+flat = true
+expand_icon = true
+
+[node name="Button2" type="Button" parent="KeyPad/VBoxContainer/BotoesContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+icon = ExtResource("5_k8f7j")
+flat = true
+expand_icon = true
+
+[node name="Button3" type="Button" parent="KeyPad/VBoxContainer/BotoesContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+icon = ExtResource("6_r1hgf")
+flat = true
+expand_icon = true
+
+[node name="Button4" type="Button" parent="KeyPad/VBoxContainer/BotoesContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+icon = ExtResource("7_57d6l")
+flat = true
+expand_icon = true
+
+[node name="Button5" type="Button" parent="KeyPad/VBoxContainer/BotoesContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+icon = ExtResource("8_24eg0")
+flat = true
+expand_icon = true
+
+[node name="Button6" type="Button" parent="KeyPad/VBoxContainer/BotoesContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+icon = ExtResource("9_el2sf")
+flat = true
+expand_icon = true
+
+[node name="Button7" type="Button" parent="KeyPad/VBoxContainer/BotoesContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+icon = ExtResource("10_3h33e")
+flat = true
+expand_icon = true
+
+[node name="Button8" type="Button" parent="KeyPad/VBoxContainer/BotoesContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+icon = ExtResource("11_e7v70")
+flat = true
+expand_icon = true
+
+[node name="Button9" type="Button" parent="KeyPad/VBoxContainer/BotoesContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+icon = ExtResource("12_1pjvv")
+flat = true
+expand_icon = true
+
+[node name="Button0" type="Button" parent="KeyPad/VBoxContainer/BotoesContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+icon = ExtResource("13_3ex58")
+flat = true
+expand_icon = true

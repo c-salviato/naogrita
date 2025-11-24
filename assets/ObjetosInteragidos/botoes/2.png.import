@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://od1bv4d15bcq"
-path="res://.godot/imported/notepad_cena.png-3bc20adfd0e872adc624bfc19d206f07.ctex"
+uid="uid://dp7br0w2hwo1b"
+path="res://.godot/imported/2.png-a1cfa038d58fbf88ed6ae5adbd2d8058.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ObjetosCena/notepad_cena.png"
-dest_files=["res://.godot/imported/notepad_cena.png-3bc20adfd0e872adc624bfc19d206f07.ctex"]
+source_file="res://assets/ObjetosInteragidos/botoes/2.png"
+dest_files=["res://.godot/imported/2.png-a1cfa038d58fbf88ed6ae5adbd2d8058.ctex"]
 
 [params]
 

@@ -26,6 +26,10 @@ mouse_cursor/custom_image="uid://dxnlhfljaq6ha"
 
 project/assembly_name="naogrita"
 
+[global_group]
+
+Player=""
+
 [input]
 
 mouse1_click={
