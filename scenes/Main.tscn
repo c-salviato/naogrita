@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://dptb4nrmwmaox"]
+[gd_scene load_steps=19 format=4 uid="uid://dptb4nrmwmaox"]
 
 [ext_resource type="Texture2D" uid="uid://cwf05gboxjkyc" path="res://assets/tileset16x16.png" id="1_jlsqs"]
 [ext_resource type="Script" uid="uid://c35ya6rknkaf7" path="res://Scripts/Character.cs" id="1_rvslj"]
@@ -7,7 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://bwkiq44ehrrry" path="res://icon.svg" id="4_vcsgt"]
 [ext_resource type="PackedScene" uid="uid://bulheiabmyr52" path="res://PreFabs/CadernoPopup.tscn" id="6_jlsqs"]
 [ext_resource type="Script" uid="uid://uqpxvnkjxrhl" path="res://Scripts/WorldObject.cs" id="6_nxtc6"]
-[ext_resource type="Texture2D" uid="uid://od1bv4d15bcq" path="res://assets/ObjetosCena/notepad_cena.png" id="7_q8u5g"]
+[ext_resource type="Script" uid="uid://bdexl70u1xup1" path="res://Scripts/Cadeia.cs" id="6_wp0k4"]
+[ext_resource type="PackedScene" uid="uid://dm21shoihpgv6" path="res://PreFabs/CadeiaPopup.tscn" id="7_bjd11"]
+[ext_resource type="Texture2D" uid="uid://bmh1m5xp5f8va" path="res://assets/ObjetosCena/Cadeia_Cena.png" id="7_lhr70"]
+[ext_resource type="Texture2D" uid="uid://od1bv4d15bcq" path="res://assets/ObjetosCena/notepad_Cena.png" id="7_q8u5g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q8u5g"]
 texture = ExtResource("1_jlsqs")
@@ -22,9 +25,15 @@ sources/0 = SubResource("TileSetAtlasSource_q8u5g")
 size = Vector2(32, 31.875)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c01mt"]
-size = Vector2(132, 128)
+size = Vector2(45, 53.33333)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhr70"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8u5g"]
+size = Vector2(20, 65)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wp0k4"]
+size = Vector2(19, 64)
 
 [node name="Node2D" type="Node2D"]
 
@@ -33,7 +42,10 @@ tile_map_data = PackedByteArray("AAAAAAcAAAABAAEAAAABAAcAAAABAAEAAAACAAcAAAABAAE
 tile_set = SubResource("TileSet_lhr70")
 
 [node name="Character" type="CharacterBody2D" parent="."]
-position = Vector2(-490, -333)
+position = Vector2(-420, -360)
+collision_layer = 0
+collision_mask = 16
+safe_margin = 0.1
 script = ExtResource("1_rvslj")
 metadata/emPopup = false
 metadata/Speed = 0
@@ -44,12 +56,12 @@ scale = Vector2(1.9999999, 1.9374999)
 texture = ExtResource("3_jlsqs")
 
 [node name="Colisao" type="CollisionShape2D" parent="Character"]
-position = Vector2(576, 445.0625)
+position = Vector2(577, 445.0625)
 shape = SubResource("RectangleShape2D_74lek")
-disabled = true
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2(300, 159)
+visible = false
+position = Vector2(500, 159)
 script = ExtResource("3_rarhs")
 
 [node name="SpriteObj" type="Sprite2D" parent="Area2D"]
@@ -57,6 +69,23 @@ z_index = -1
 texture = ExtResource("4_vcsgt")
 
 [node name="Colisao" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_c01mt")
+
+[node name="Cadeia" type="Area2D" parent="." node_paths=PackedStringArray("UiLayerRef")]
+position = Vector2(160, 77)
+scale = Vector2(1.2, 1.2)
+script = ExtResource("6_wp0k4")
+InspectSceneToLoad = ExtResource("7_bjd11")
+UiLayerRef = NodePath("../Node2D/UILayer")
+
+[node name="SpriteCadeia" type="Sprite2D" parent="Cadeia"]
+z_index = -1
+position = Vector2(-0.49999332, 0)
+scale = Vector2(3.437501, 3.375)
+texture = ExtResource("7_lhr70")
+
+[node name="ColisaoCadeia" type="CollisionShape2D" parent="Cadeia"]
+position = Vector2(-2.5, 0)
 shape = SubResource("RectangleShape2D_c01mt")
 
 [node name="Objeto_Caderno" type="Area2D" parent="." node_paths=PackedStringArray("UiLayerRef")]
@@ -75,9 +104,18 @@ texture = ExtResource("7_q8u5g")
 
 [node name="UILayer" type="CanvasLayer" parent="Node2D"]
 
-[connection signal="input_event" from="Area2D" to="Area2D" method="OnInputEvent"]
-[connection signal="mouse_entered" from="Area2D" to="Area2D" method="OnMouseEntered"]
-[connection signal="mouse_exited" from="Area2D" to="Area2D" method="OnMouseExited"]
-[connection signal="input_event" from="Objeto_Caderno" to="Objeto_Caderno" method="_on_input_event"]
-[connection signal="mouse_entered" from="Objeto_Caderno" to="Objeto_Caderno" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Objeto_Caderno" to="Objeto_Caderno" method="_on_mouse_exited"]
+[node name="CadeiaParedeEsquerda" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="ColisaoParedeEsquerda" type="CollisionShape2D" parent="CadeiaParedeEsquerda"]
+position = Vector2(120, 77.5)
+shape = SubResource("RectangleShape2D_q8u5g")
+
+[node name="CadeiaParedeDireita" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="ColisaoParedeDireita" type="CollisionShape2D" parent="CadeiaParedeDireita"]
+position = Vector2(193.5, 77)
+shape = SubResource("RectangleShape2D_wp0k4")

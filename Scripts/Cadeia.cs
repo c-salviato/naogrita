@@ -1,12 +1,15 @@
 using Godot;
 using System;
-/*
-public partial class Cadeia : IterateObject
+
+public partial class Cadeia : WorldObject
 {
-	public override void _Ready()
+	public override string GetCustomText()
 	{
-		textoCustom = "Cadeia";
+		return "Cadeia";
 	}
 	
+	public override void _Ready()
+	{
+		base._Ready();
+	}
 }
-*/

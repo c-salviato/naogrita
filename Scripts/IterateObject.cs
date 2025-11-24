@@ -5,11 +5,15 @@ public partial class IterateObject : Area2D
 {
 	
 	public Font _defaultFont;
-	public String textoCustom = "Objeto";
+	public virtual String GetCustomText()
+	{
+		return "Objeto"; // Valor default se não for sobrescrito
+	}
 	private String texto = "";
 	private Vector2 _posicaoMouseGlobal = Vector2.Zero;
 	public Texture2D _mao;
 	private readonly Vector2 sizeImg = new Vector2(32, 32);
+	private Character _playerRef;
 	
 	public override void _Ready()
 	{
@@ -19,6 +23,8 @@ public partial class IterateObject : Area2D
 		this.MouseEntered += OnMouseEntered;
 		this.MouseExited += OnMouseExited;
 		this.InputEvent += OnInputEvent;
+		
+		_playerRef = GetTree().Root.GetNode<Character>("Node2D/Character");	
 		
 		QueueRedraw();
 	}
@@ -40,7 +46,7 @@ public partial class IterateObject : Area2D
 	{
 		GD.Print("Ta na area do objeto");
 		//Detecta que o Mouse entrou na area do objeto e muda o cursor de acordo
-		texto = textoCustom;
+		texto = GetCustomText();
 		QueueRedraw();
 		//SetDefaultCursorShape
 		Input.SetDefaultCursorShape(Input.CursorShape.PointingHand);
@@ -75,23 +81,26 @@ public partial class IterateObject : Area2D
 		
 	}
 	
-	
 	public override void _Draw()
 	{
-		if (_defaultFont != null)
+		if (_playerRef != null && _playerRef.emPopup)
+		{
+			// Se estiver em popup, não desenhe o texto flutuante.
+			return; 
+		}
+		// Se o texto local estiver vazio (após OnMouseExited), o bloco nem será executado.
+		if (_defaultFont != null && !string.IsNullOrEmpty(texto)) 
 		{
 			Vector2 posicaoTexto = ToLocal(_posicaoMouseGlobal);
 			posicaoTexto.Y -= 10;
-			posicaoTexto.X -= 45; 
-			DrawString(_defaultFont, 
-					   posicaoTexto, 
-					   texto, 
-					   HorizontalAlignment.Center, 
-					   90, 
-					   8, 
-					   Colors.Red);
+			posicaoTexto.X -= 45; 
+			DrawString(_defaultFont, 
+			posicaoTexto, 
+			texto, 
+			HorizontalAlignment.Center, 
+			90, 
+			8, 
+			Colors.Red);
 		}
 	}
-	
-	
 }

@@ -2,7 +2,7 @@ using Godot;
 
 public partial class Character : CharacterBody2D
 {
-	public int Speed { get; set; } = 150;
+	public int Speed { get; set; } = 50;
 	public bool emPopup { get; set; } = false;
 
 	private Sprite2D _sprite;
