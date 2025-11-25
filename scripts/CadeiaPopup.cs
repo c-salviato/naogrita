@@ -11,11 +11,21 @@ public partial class CadeiaPopup : InspectPopupBase
 
 	// Armazena a senha atual que o jogador digitou (como nomes de textura ou IDs)
 	private List<string> _senhaAtual = new List<string>();
-
+	private readonly List<string>  _senhaCorreta = new List<string>(new string[]
+{
+	"res://assets/ObjetosInteragidos/Botoes/5.png",//5
+	"res://assets/ObjetosInteragidos/Botoes/1.png",//1
+	"res://assets/ObjetosInteragidos/Botoes/9.png",//9
+	"res://assets/ObjetosInteragidos/Botoes/4.png"//4
+});
+	
+	
+	
+	
 	public override void _Ready()
 	{
 		base._Ready(); // Chama o _Ready da classe pai (fecha botão, etc)
-
+		
 		// Pegamos as referências dos containers
 		// Adicionamos o "KeyPad/" no começo do caminho
 		_displayContainer = GetNode<HBoxContainer>("KeyPad/VBoxContainer/DisplayContainer");
@@ -23,7 +33,8 @@ public partial class CadeiaPopup : InspectPopupBase
 
 		ConectarBotoes();
 	}
-
+	
+	
 	private void ConectarBotoes()
 	{
 		// Percorre todos os filhos do container de botões
@@ -83,8 +94,45 @@ public partial class CadeiaPopup : InspectPopupBase
 
 	private void VerificarSenha()
 	{
+		//verifica quantos digitos estao certos
+		int corretos = 0;
 		GD.Print("Senha digitada. Falta verificar aq");
-		// AQUI ENTRARÁ A LÓGICA DE CONFERÊNCIA (Passo seguinte)
+		for(int index = 0; index < MaxDigitos; index++)
+		{
+			if(_senhaCorreta[index] == _senhaAtual[index])
+			{
+				GD.Print("Digito Correto YAYYYYY");
+				corretos++;
+			}
+			else
+			{
+				GD.Print("Digito Incorreto");
+			}
+		}
+		if(corretos == MaxDigitos)
+		{
+			GD.Print("Senha Correta");
+			ClosePopup();
+			EstadoCadeia();
+		}
+		else
+		{
+			GD.Print("Senha Incorreta");
+			LimparDisplay();
+		}
+	}
+
+	private void EstadoCadeia()
+	{
+		Cadeia cadeia = GetTree().GetFirstNodeInGroup("Objetos") as Cadeia;
+		
+		if (cadeia == null)
+		{
+			GD.PrintErr("ERRO DE Grupo: Não encontrei a Cadeia no grupo Objetos. Verifique a árvore remota.");
+			// Dica: Se mudou o nome da cena Main ou do nó da Cadeia, isso falha.
+			return;
+		}
+		cadeia.EstadoCadeia(true);
 	}
 
 	// Função útil para limpar o display (caso erre a senha)
