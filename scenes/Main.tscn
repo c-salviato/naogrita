@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://dptb4nrmwmaox"]
+[gd_scene load_steps=27 format=4 uid="uid://dptb4nrmwmaox"]
 
 [ext_resource type="Texture2D" uid="uid://did622qiefu88" path="res://assets/tilesets.png" id="1_jlsqs"]
 [ext_resource type="Script" uid="uid://c35ya6rknkaf7" path="res://Scripts/Character.cs" id="1_rvslj"]
@@ -12,7 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://od1bv4d15bcq" path="res://assets/ObjetosCena/notepad_cena.png" id="7_q8u5g"]
 [ext_resource type="PackedScene" uid="uid://dm21shoihpgv6" path="res://PreFabs/CadeiaPopup.tscn" id="7_wp0k4"]
 [ext_resource type="Texture2D" uid="uid://b72egro0s6xoc" path="res://assets/ObjetosCena/comodo_sprite.png" id="12_qmy6f"]
+[ext_resource type="Script" uid="uid://33ladhc36dic" path="res://Scripts/CelularMundo.cs" id="13_3p2gp"]
 [ext_resource type="Texture2D" uid="uid://co75v0471753n" path="res://assets/ObjetosCena/Celular.png" id="13_mwfav"]
+[ext_resource type="PackedScene" uid="uid://c72538hacp8p6" path="res://PreFabs/CelularUI.tscn" id="15_3p2gp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q8u5g"]
 texture = ExtResource("1_jlsqs")
@@ -165,13 +167,17 @@ texture = ExtResource("12_qmy6f")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Comodo"]
 shape = SubResource("RectangleShape2D_3p2gp")
 
-[node name="Celular" type="Area2D" parent="."]
+[node name="CelularMundo" type="Area2D" parent="."]
 position = Vector2(261, 79)
 rotation = -1.6842427
+script = ExtResource("13_3p2gp")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Celular"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CelularMundo"]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_cvmbd")
 
-[node name="Sprite2D" type="Sprite2D" parent="Celular"]
+[node name="Sprite2D" type="Sprite2D" parent="CelularMundo"]
 texture = ExtResource("13_mwfav")
+
+[node name="CelularUI" parent="." instance=ExtResource("15_3p2gp")]
+visible = false

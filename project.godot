@@ -34,6 +34,7 @@ project/assembly_name="naogrita"
 
 Player=""
 Objetos="ObjetosInterativo"
+GrupoCelular=""
 
 [input]
 
