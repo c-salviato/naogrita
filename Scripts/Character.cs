@@ -1,5 +1,7 @@
 using Godot;
 
+
+
 public partial class Character : CharacterBody2D
 {
 	public int Speed { get; set; } = 50;

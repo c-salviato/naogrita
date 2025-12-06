@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://duh0j41mckq0m"]
+
+[ext_resource type="AudioStream" uid="uid://cnb5s5040ixsf" path="res://assets/William Rosati - Floating Also ♫ NO COPYRIGHT 8-bit Music 4.mp3" id="1_r7flq"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_r7flq")
+volume_db = -15.0
+autoplay = true

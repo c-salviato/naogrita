@@ -15,6 +15,10 @@ run/main_scene="uid://dptb4nrmwmaox"
 config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GerenciadorAudio="*res://scenes/GerenciadorAudio.tscn"
+
 [display]
 
 window/size/viewport_width=320
