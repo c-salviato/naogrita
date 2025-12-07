@@ -33,7 +33,6 @@ public partial class CelularUI : CanvasLayer
 		{
 			connection.Open();
 			var command = connection.CreateCommand();
-			// Cria uma tabela simples se não existir
 			command.CommandText = @"
                 CREATE TABLE IF NOT EXISTS Notas (
                     id INTEGER PRIMARY KEY,
@@ -43,7 +42,7 @@ public partial class CelularUI : CanvasLayer
 		}
 	}
 
-	// Função chamada pelo Botão de Salvar (Conecte o sinal "pressed" do botão a esta função no editor ou via código)
+	
 	public void _on_btn_salvar_pressed()
 	{
 		GD.Print(">>> CLIQUEI NO BOTÃO SALVAR! <<<");
@@ -53,7 +52,6 @@ public partial class CelularUI : CanvasLayer
 		{
 			connection.Open();
 			var command = connection.CreateCommand();
-			// Usamos UPSERT ou DELETE/INSERT simplificado. Aqui faremos update simples assumindo ID 1.
 			command.CommandText = @"
 				INSERT OR REPLACE INTO Notas (id, conteudo) VALUES (1, $texto);";
 			command.Parameters.AddWithValue("$texto", textoParaSalvar);
@@ -80,10 +78,9 @@ public partial class CelularUI : CanvasLayer
 		}
 	}
 
-	// Função para abrir/fechar o celular
 	public void ToggleCelular()
 	{
-		GD.Print(">>> SUCESSO! ENTREI NA FUNÇÃO TOGGLE CELULAR! <<<"); // Adicione isso
+		GD.Print(">>> SUCESSO! ENTREI NA FUNÇÃO TOGGLE CELULAR! <<<"); 
 		
 		this.Visible = !this.Visible;
 		GD.Print($"Agora a visibilidade é: {this.Visible}");

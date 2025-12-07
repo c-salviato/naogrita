@@ -22,18 +22,17 @@ public partial class CelularMundo : WorldObject
 		if (_uiNode != null)
 		{
 			GD.Print("------------------------------------------------");
-			GD.Print($"[INVESTIGAÇÃO] Encontrei o nó: {_uiNode.Name}");
-			GD.Print($"[INVESTIGAÇÃO] Tipo nativo: {_uiNode.GetType()}");
+			GD.Print($"Encontrei o nó: {_uiNode.Name}");
+			GD.Print($"Tipo nativo: {_uiNode.GetType()}");
 			
-			// Vamos ver se tem script anexado de verdade
 			var script = _uiNode.GetScript().As<Script>();
 			if (script != null)
 			{
-				GD.Print($"[INVESTIGAÇÃO] Script anexado: {script.ResourcePath}");
+				GD.Print($"Script anexado: {script.ResourcePath}");
 			}
 			else
 			{
-				GD.PrintErr("[CRIME DESCOBERTO] O nó existe, mas NÃO TEM SCRIPT anexado no jogo rodando!");
+				GD.PrintErr("O nó existe, mas NÃO TEM SCRIPT anexado no jogo rodando!");
 			}
 			GD.Print("------------------------------------------------");
 		}
@@ -46,22 +45,19 @@ public partial class CelularMundo : WorldObject
 		{
 			if (_soundEffect != null)
 			{
-				// Remove o nó do CelularMundo (ele ainda está na memória)
 				RemoveChild(_soundEffect);
-			
-				// Adiciona ele à raiz da cena (ou a um nó persistente)
+
 				GetTree().Root.AddChild(_soundEffect);
-			
-				// Conecta o sinal 'Finished' para que ele se exclua automaticamente
+
 				_soundEffect.Finished += _soundEffect.QueueFree;
 				_soundEffect.Play();
 			}
 			GD.Print("Tentando abrir o celular via Call()...");
-			// Abre a tela ampliada
+
 			_uiNode.Call("ToggleCelular");
-			// --- ADICIONE ISSO AQUI EMBAIXO ---
+
 			GD.Print("Celular coletado! Deletando objeto do chão...");
-			QueueFree(); // "Fila de Execução para Liberar" -> Destrói o objeto
+			QueueFree();
 		}
 		
 	}

@@ -57,8 +57,6 @@ public partial class CadeiaPopup : InspectPopupBase
 			// Verifica se o filho é um botão
 			if (child is Button botao)
 			{
-				// Conecta o sinal Pressed dinamicamente usando uma função anônima (lambda)
-				// Isso envia o ÍCONE (Textura) do botão clicado para a função
 				botao.Pressed += () => AoClicarTecla(botao.Icon);
 			}
 		}
@@ -66,7 +64,7 @@ public partial class CadeiaPopup : InspectPopupBase
 
 	private void AoClicarTecla(Texture2D imagemSimbolo)
 	{
-		// 1. Verifica se já atingiu o limite
+
 		if (_senhaAtual.Count >= MaxDigitos)
 		{
 			// Opcional: Tocar um som de "Erro" ou balançar a tela
@@ -77,17 +75,14 @@ public partial class CadeiaPopup : InspectPopupBase
 			TocarSom();
 		}
 
-		// 2. Adiciona visualmente no display
+
 		AdicionarImagemNoDisplay(imagemSimbolo);
 
-		// 3. Adiciona na lógica (para conferir a senha depois)
-		// Vamos usar o caminho do arquivo da imagem como "ID" único
 		_senhaAtual.Add(imagemSimbolo.ResourcePath);
 		
 		// Debug
 		GD.Print("Digitou. Total: " + _senhaAtual.Count);
-		
-		// Se encheu os 4 digitos, verifica a senha
+
 		if (_senhaAtual.Count == MaxDigitos)
 		{
 			VerificarSenha();

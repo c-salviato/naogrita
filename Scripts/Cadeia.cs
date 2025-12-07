@@ -61,7 +61,7 @@ public partial class Cadeia : WorldObject
 		PlayOpenSound();
 		//Move o Personagem para frente.
 		Tween tween = GetTree().CreateTween();
-		float novaPosicaoY = -340.0f;
+		float novaPosicaoY = 20.0f;
 		float duracao = 0.5f;
 		tween.TweenProperty(PlayerRef, "global_position:y", novaPosicaoY, duracao);
 		

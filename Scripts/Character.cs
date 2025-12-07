@@ -8,12 +8,12 @@ public partial class Character : CharacterBody2D
 	[Export] public bool emPopup { get; set; } = false;
 	private AudioStreamPlayer2D _movimento;
 	private Timer _tempo;
-	private Sprite2D _sprite;
+	private AnimatedSprite2D _sprite;
 	private bool _isMoving = false;
 
 	public override void _Ready()
 	{
-		_sprite = GetNode<Sprite2D>("Sprite");
+		_sprite = GetNode<AnimatedSprite2D>("Sprite");
 		_movimento = GetNode<AudioStreamPlayer2D>("Andar");
 		_tempo = GetNode<Timer>("tempo");
 		
@@ -24,7 +24,11 @@ public partial class Character : CharacterBody2D
 		}
 		if(_sprite == null)
 		{
-			GD.PushError("Sprite Do Personagem Nao Encontrado");
+			GD.PushError("Sprite Animado Do Personagem Nao Encontrado");
+		}
+		else
+		{
+			_sprite.Play("idle");
 		}
 	}
 	
@@ -78,6 +82,10 @@ public partial class Character : CharacterBody2D
 	public void EstadoPopup(bool estado)
 	{
 		emPopup = estado;
+		if(emPopup && _sprite != null)
+		{
+			_sprite.Play("idle");
+		}
 	}
 	
 	public override void _PhysicsProcess(double delta)
@@ -91,6 +99,7 @@ public partial class Character : CharacterBody2D
 		if(Velocity.LengthSquared() > 0)
 		{
 			_isMoving = true;
+			_sprite.Play("walk");
 			if (_tempo.IsStopped())
 			{
 				_tempo.Start();
@@ -98,6 +107,7 @@ public partial class Character : CharacterBody2D
 		}
 		else
 		{
+			_sprite.Play("idle");
 			_isMoving = false;
 			_tempo.Stop();
 		}

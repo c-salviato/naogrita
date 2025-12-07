@@ -1,16 +1,17 @@
-[gd_scene load_steps=32 format=4 uid="uid://dptb4nrmwmaox"]
+[gd_scene load_steps=40 format=4 uid="uid://dptb4nrmwmaox"]
 
 [ext_resource type="Texture2D" uid="uid://did622qiefu88" path="res://assets/tilesets.png" id="1_jlsqs"]
 [ext_resource type="Script" uid="uid://c35ya6rknkaf7" path="res://Scripts/Character.cs" id="1_rvslj"]
-[ext_resource type="Texture2D" uid="uid://7yy2u1m2vtj7" path="res://assets/Character/New Piskel (6).png" id="3_jlsqs"]
 [ext_resource type="Script" uid="uid://5v3g44v7kqql" path="res://Scripts/IterateObject.cs" id="3_rarhs"]
-[ext_resource type="AudioStream" uid="uid://ojcbfa6qapgm" path="res://assets/SoundEffects/CharMovement.mp3" id="4_bb450"]
+[ext_resource type="Texture2D" uid="uid://dpaos77ot4b1f" path="res://assets/Character/player_idle.png" id="4_1iba3"]
+[ext_resource type="AudioStream" uid="uid://ussa8mbldfs1" path="res://assets/SoundEffects/CharMovement.mp3" id="4_bb450"]
 [ext_resource type="Texture2D" uid="uid://bwkiq44ehrrry" path="res://icon.svg" id="4_vcsgt"]
+[ext_resource type="Texture2D" uid="uid://dcpfi1y8dp0ga" path="res://assets/Character/player_walk.png" id="5_yxlcp"]
 [ext_resource type="PackedScene" uid="uid://bulheiabmyr52" path="res://PreFabs/CadernoPopup.tscn" id="6_jlsqs"]
 [ext_resource type="Script" uid="uid://cc6t2jqkm3yc2" path="res://Scripts/Cadeia.cs" id="6_lhr70"]
 [ext_resource type="Script" uid="uid://uqpxvnkjxrhl" path="res://Scripts/WorldObject.cs" id="6_nxtc6"]
 [ext_resource type="Texture2D" uid="uid://bmh1m5xp5f8va" path="res://assets/ObjetosCena/Cadeia_Cena.png" id="7_lhr70"]
-[ext_resource type="Texture2D" uid="uid://od1bv4d15bcq" path="res://assets/ObjetosCena/notepad_Cena.png" id="7_q8u5g"]
+[ext_resource type="Texture2D" uid="uid://od1bv4d15bcq" path="res://assets/ObjetosCena/notepad_cena.png" id="7_q8u5g"]
 [ext_resource type="PackedScene" uid="uid://dm21shoihpgv6" path="res://PreFabs/CadeiaPopup.tscn" id="7_wp0k4"]
 [ext_resource type="AudioStream" uid="uid://dlfhxnj4g867p" path="res://assets/SoundEffects/CadeiaAbrir.mp3" id="9_ft6cd"]
 [ext_resource type="AudioStream" uid="uid://cjexyongea1dm" path="res://assets/SoundEffects/KeypadOn.mp3" id="10_bb450"]
@@ -19,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://co75v0471753n" path="res://assets/ObjetosCena/Celular.png" id="13_mwfav"]
 [ext_resource type="AudioStream" uid="uid://di8nrydvu5qo4" path="res://assets/SoundEffects/Caderno.mp3" id="15_1nqs0"]
 [ext_resource type="PackedScene" uid="uid://c72538hacp8p6" path="res://PreFabs/CelularUI.tscn" id="15_3p2gp"]
-[ext_resource type="AudioStream" uid="uid://giie68xbe5kp" path="res://assets/SoundEffects/LigarCell.mp3" id="18_nfivy"]
+[ext_resource type="AudioStream" uid="uid://cxmvclk85q5d8" path="res://assets/SoundEffects/LigarCell.mp3" id="18_nfivy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q8u5g"]
 texture = ExtResource("1_jlsqs")
@@ -35,6 +36,61 @@ sources/0 = SubResource("TileSetAtlasSource_q8u5g")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_74lek"]
 size = Vector2(32, 31.875)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebg2g"]
+atlas = ExtResource("4_1iba3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ofn6"]
+atlas = ExtResource("4_1iba3")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xa025"]
+atlas = ExtResource("4_1iba3")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36rkl"]
+atlas = ExtResource("4_1iba3")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fs0b5"]
+atlas = ExtResource("5_yxlcp")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ma7h6"]
+atlas = ExtResource("5_yxlcp")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e2s0e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebg2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ofn6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xa025")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_36rkl")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fs0b5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ma7h6")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 4.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c01mt"]
 size = Vector2(51.66667, 53.33333)
@@ -67,8 +123,7 @@ tile_map_data = PackedByteArray("AAAAAAcAAAADAAEAAAABAAcAAAADAAEAAAACAAcAAAADAAE
 tile_set = SubResource("TileSet_lhr70")
 
 [node name="Character" type="CharacterBody2D" parent="." groups=["Player"]]
-z_index = 1
-position = Vector2(-420, -360)
+z_index = 5
 collision_layer = 0
 collision_mask = 16
 safe_margin = 0.1
@@ -76,20 +131,26 @@ script = ExtResource("1_rvslj")
 metadata/emPopup = false
 metadata/Speed = 0
 
-[node name="Sprite" type="Sprite2D" parent="Character"]
-position = Vector2(576, 445.5)
-scale = Vector2(1.9999999, 1.9374999)
-texture = ExtResource("3_jlsqs")
-
 [node name="Colisao" type="CollisionShape2D" parent="Character"]
-position = Vector2(577, 445.0625)
+position = Vector2(159, 87.0625)
 shape = SubResource("RectangleShape2D_74lek")
 
 [node name="Andar" type="AudioStreamPlayer2D" parent="Character"]
+position = Vector2(159, 87)
 stream = ExtResource("4_bb450")
 volume_db = 12.0
 
 [node name="tempo" type="Timer" parent="Character"]
+wait_time = 0.3
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Character"]
+z_index = 10
+position = Vector2(159, 87)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_e2s0e")
+animation = &"walk"
+autoplay = "idle"
+frame_progress = 0.32618743
 
 [node name="Area2D" type="Area2D" parent="."]
 visible = false
@@ -189,7 +250,6 @@ shape = SubResource("RectangleShape2D_3p2gp")
 
 [node name="CelularMundo" type="Area2D" parent="."]
 position = Vector2(261, 79)
-rotation = -1.6842427
 script = ExtResource("13_3p2gp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CelularMundo"]
@@ -197,6 +257,7 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_cvmbd")
 
 [node name="Sprite2D" type="Sprite2D" parent="CelularMundo"]
+rotation = -1.5358897
 texture = ExtResource("13_mwfav")
 
 [node name="PegarCell" type="AudioStreamPlayer2D" parent="CelularMundo"]
