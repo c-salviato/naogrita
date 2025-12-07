@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dm21shoihpgv6"]
+[gd_scene load_steps=16 format=3 uid="uid://dm21shoihpgv6"]
 
 [ext_resource type="Script" uid="uid://bbeapopgonu3a" path="res://Scripts/CadeiaPopup.cs" id="1_mqj1v"]
 [ext_resource type="Texture2D" uid="uid://xtrm16qfjj21" path="res://assets/ObjetosInteragidos/pixil-frame-0 (3).png" id="2_3qsel"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cbpekqyhw4xs2" path="res://assets/ObjetosInteragidos/Botoes/9.png" id="12_1pjvv"]
 [ext_resource type="Texture2D" uid="uid://46jx3ohonedh" path="res://assets/ObjetosInteragidos/Botoes/0.png" id="13_3ex58"]
 [ext_resource type="Texture2D" uid="uid://dimt21gqddmmi" path="res://assets/ObjetosInteragidos/notes.png" id="14_k8f7j"]
+[ext_resource type="AudioStream" uid="uid://bpii4ff7j1ew8" path="res://assets/SoundEffects/ClickBotao.mp3" id="15_r1hgf"]
 
 [node name="CadeiaPopup" type="Control"]
 layout_mode = 3
@@ -183,3 +184,6 @@ offset_top = -217.0
 offset_right = -278.0
 offset_bottom = -153.0
 texture = ExtResource("14_k8f7j")
+
+[node name="Click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_r1hgf")

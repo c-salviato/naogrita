@@ -4,10 +4,15 @@ using System;
 public partial class IterateObject : Area2D
 {
 	
+	public AudioStreamPlayer2D _soundEffect;
 	public Font _defaultFont;
 	public virtual String GetCustomText()
 	{
 		return "Objeto"; // Valor default se não for sobrescrito
+	}
+	public virtual String DefineSoundEffect()
+	{
+		return "";
 	}
 	private String texto = "";
 	private Vector2 _posicaoMouseGlobal = Vector2.Zero;
@@ -29,6 +34,14 @@ public partial class IterateObject : Area2D
 		QueueRedraw();
 	}
 	
+	public void PlaySound()
+	{
+		// O método Play() inicia o som a partir do início.
+		// Ele vai usar o AudioStream que você configurou no Inspetor.
+		_soundEffect.Play();
+		// Se você quiser que o som comece de uma posição específica, use:
+		// _soundEffect.Play(2.5f); // Começa a tocar a partir dos 2.5 segundos
+	}
 	
 	public override void _Process(double delta)
 	{
@@ -77,8 +90,6 @@ public partial class IterateObject : Area2D
 	
 	public virtual void Acao()
 	{
-		//Nome Auto Explicativo por padrao vai fazer algo =O
-		
 	}
 	
 	public override void _Draw()

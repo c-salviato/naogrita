@@ -1,10 +1,20 @@
 using Godot;
 using System;
 
-public partial class CelularMundo : Area2D
+public partial class CelularMundo : WorldObject
 {
 	private Node _uiNode; // Mudamos de 'CelularUI' para 'Node' (Genérico)
-
+	
+	
+	
+	public override string GetCustomText()
+	{
+		return "Celular";
+	}
+	public override string DefineSoundEffect()
+	{
+		return "PegarCell";
+	}
 	public override void _Ready()
 	{
 		_uiNode = GetTree().Root.FindChild("CelularUI", true, false);
@@ -27,24 +37,32 @@ public partial class CelularMundo : Area2D
 			}
 			GD.Print("------------------------------------------------");
 		}
-		
-		this.InputEvent += OnInputEvent;
+		base._Ready();
 	}
 
-	private void OnInputEvent(Node viewport, InputEvent @event, long shapeIdx)
+	public override void Acao()
 	{
-		if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed && mouseEvent.ButtonIndex == MouseButton.Left)
+		if (_uiNode != null)
 		{
-			if (_uiNode != null)
+			if (_soundEffect != null)
 			{
-				GD.Print("Tentando abrir o celular via Call()...");
-				// Abre a tela ampliada
-				_uiNode.Call("ToggleCelular");
-
-				// --- ADICIONE ISSO AQUI EMBAIXO ---
-				GD.Print("Celular coletado! Deletando objeto do chão...");
-				QueueFree(); // "Fila de Execução para Liberar" -> Destrói o objeto
+				// Remove o nó do CelularMundo (ele ainda está na memória)
+				RemoveChild(_soundEffect);
+			
+				// Adiciona ele à raiz da cena (ou a um nó persistente)
+				GetTree().Root.AddChild(_soundEffect);
+			
+				// Conecta o sinal 'Finished' para que ele se exclua automaticamente
+				_soundEffect.Finished += _soundEffect.QueueFree;
+				_soundEffect.Play();
 			}
+			GD.Print("Tentando abrir o celular via Call()...");
+			// Abre a tela ampliada
+			_uiNode.Call("ToggleCelular");
+			// --- ADICIONE ISSO AQUI EMBAIXO ---
+			GD.Print("Celular coletado! Deletando objeto do chão...");
+			QueueFree(); // "Fila de Execução para Liberar" -> Destrói o objeto
 		}
+		
 	}
 }

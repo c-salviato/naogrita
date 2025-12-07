@@ -11,16 +11,20 @@ public partial class WorldObject : IterateObject
 	{
 		return "Caderno";
 	}
-	
+	public override string DefineSoundEffect()
+	{
+		return "ClicarCaderno";
+	}
 	public override void _Ready()
 	{
 		base._Ready();
-
+		_soundEffect = GetNode<AudioStreamPlayer2D>(DefineSoundEffect());
 	}
 
 	public override void Acao()
 	{
 		OpenInspection();
+		PlaySound();
 	}
 
 	private void OpenInspection()

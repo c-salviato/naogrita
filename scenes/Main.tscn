@@ -1,20 +1,25 @@
-[gd_scene load_steps=27 format=4 uid="uid://dptb4nrmwmaox"]
+[gd_scene load_steps=32 format=4 uid="uid://dptb4nrmwmaox"]
 
 [ext_resource type="Texture2D" uid="uid://did622qiefu88" path="res://assets/tilesets.png" id="1_jlsqs"]
 [ext_resource type="Script" uid="uid://c35ya6rknkaf7" path="res://Scripts/Character.cs" id="1_rvslj"]
 [ext_resource type="Texture2D" uid="uid://7yy2u1m2vtj7" path="res://assets/Character/New Piskel (6).png" id="3_jlsqs"]
 [ext_resource type="Script" uid="uid://5v3g44v7kqql" path="res://Scripts/IterateObject.cs" id="3_rarhs"]
+[ext_resource type="AudioStream" uid="uid://ojcbfa6qapgm" path="res://assets/SoundEffects/CharMovement.mp3" id="4_bb450"]
 [ext_resource type="Texture2D" uid="uid://bwkiq44ehrrry" path="res://icon.svg" id="4_vcsgt"]
 [ext_resource type="PackedScene" uid="uid://bulheiabmyr52" path="res://PreFabs/CadernoPopup.tscn" id="6_jlsqs"]
 [ext_resource type="Script" uid="uid://cc6t2jqkm3yc2" path="res://Scripts/Cadeia.cs" id="6_lhr70"]
 [ext_resource type="Script" uid="uid://uqpxvnkjxrhl" path="res://Scripts/WorldObject.cs" id="6_nxtc6"]
 [ext_resource type="Texture2D" uid="uid://bmh1m5xp5f8va" path="res://assets/ObjetosCena/Cadeia_Cena.png" id="7_lhr70"]
-[ext_resource type="Texture2D" uid="uid://od1bv4d15bcq" path="res://assets/ObjetosCena/notepad_cena.png" id="7_q8u5g"]
+[ext_resource type="Texture2D" uid="uid://od1bv4d15bcq" path="res://assets/ObjetosCena/notepad_Cena.png" id="7_q8u5g"]
 [ext_resource type="PackedScene" uid="uid://dm21shoihpgv6" path="res://PreFabs/CadeiaPopup.tscn" id="7_wp0k4"]
+[ext_resource type="AudioStream" uid="uid://dlfhxnj4g867p" path="res://assets/SoundEffects/CadeiaAbrir.mp3" id="9_ft6cd"]
+[ext_resource type="AudioStream" uid="uid://cjexyongea1dm" path="res://assets/SoundEffects/KeypadOn.mp3" id="10_bb450"]
 [ext_resource type="Texture2D" uid="uid://b72egro0s6xoc" path="res://assets/ObjetosCena/comodo_sprite.png" id="12_qmy6f"]
 [ext_resource type="Script" uid="uid://33ladhc36dic" path="res://Scripts/CelularMundo.cs" id="13_3p2gp"]
 [ext_resource type="Texture2D" uid="uid://co75v0471753n" path="res://assets/ObjetosCena/Celular.png" id="13_mwfav"]
+[ext_resource type="AudioStream" uid="uid://di8nrydvu5qo4" path="res://assets/SoundEffects/Caderno.mp3" id="15_1nqs0"]
 [ext_resource type="PackedScene" uid="uid://c72538hacp8p6" path="res://PreFabs/CelularUI.tscn" id="15_3p2gp"]
+[ext_resource type="AudioStream" uid="uid://giie68xbe5kp" path="res://assets/SoundEffects/LigarCell.mp3" id="18_nfivy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q8u5g"]
 texture = ExtResource("1_jlsqs")
@@ -32,7 +37,7 @@ sources/0 = SubResource("TileSetAtlasSource_q8u5g")
 size = Vector2(32, 31.875)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c01mt"]
-size = Vector2(45, 53.33333)
+size = Vector2(51.66667, 53.33333)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhr70"]
 
@@ -80,6 +85,12 @@ texture = ExtResource("3_jlsqs")
 position = Vector2(577, 445.0625)
 shape = SubResource("RectangleShape2D_74lek")
 
+[node name="Andar" type="AudioStreamPlayer2D" parent="Character"]
+stream = ExtResource("4_bb450")
+volume_db = 12.0
+
+[node name="tempo" type="Timer" parent="Character"]
+
 [node name="Area2D" type="Area2D" parent="."]
 visible = false
 position = Vector2(500, 159)
@@ -102,7 +113,7 @@ InspectSceneToLoad = ExtResource("7_wp0k4")
 UiLayerRef = NodePath("../Node2D/UILayer")
 
 [node name="ColisaoCadeia" type="CollisionShape2D" parent="Cadeia"]
-position = Vector2(-2.5, 0)
+position = Vector2(0.83332825, 0)
 shape = SubResource("RectangleShape2D_c01mt")
 
 [node name="SpriteCadeia" type="Sprite2D" parent="Cadeia"]
@@ -110,6 +121,12 @@ z_index = -1
 position = Vector2(-0.49999332, 0)
 scale = Vector2(3.437501, 3.375)
 texture = ExtResource("7_lhr70")
+
+[node name="Abrir" type="AudioStreamPlayer2D" parent="Cadeia"]
+stream = ExtResource("9_ft6cd")
+
+[node name="Keypad" type="AudioStreamPlayer2D" parent="Cadeia"]
+stream = ExtResource("10_bb450")
 
 [node name="Objeto_Caderno" type="Area2D" parent="." node_paths=PackedStringArray("UiLayerRef")]
 position = Vector2(223, 58)
@@ -122,6 +139,9 @@ shape = SubResource("RectangleShape2D_lhr70")
 
 [node name="SpriteCaderno" type="Sprite2D" parent="Objeto_Caderno"]
 texture = ExtResource("7_q8u5g")
+
+[node name="ClicarCaderno" type="AudioStreamPlayer2D" parent="Objeto_Caderno"]
+stream = ExtResource("15_1nqs0")
 
 [node name="Node2D" type="Node2D" parent="."]
 
@@ -140,7 +160,7 @@ collision_layer = 16
 collision_mask = 16
 
 [node name="ColisaoParedeDireita" type="CollisionShape2D" parent="CadeiaParedeDireita"]
-position = Vector2(193.5, 77)
+position = Vector2(202, 76)
 shape = SubResource("RectangleShape2D_wp0k4")
 
 [node name="ParedeCenaE" type="StaticBody2D" parent="."]
@@ -178,6 +198,10 @@ shape = SubResource("RectangleShape2D_cvmbd")
 
 [node name="Sprite2D" type="Sprite2D" parent="CelularMundo"]
 texture = ExtResource("13_mwfav")
+
+[node name="PegarCell" type="AudioStreamPlayer2D" parent="CelularMundo"]
+stream = ExtResource("18_nfivy")
+volume_db = 10.0
 
 [node name="CelularUI" parent="." instance=ExtResource("15_3p2gp")]
 visible = false

@@ -5,17 +5,34 @@ public partial class Cadeia : WorldObject
 {
 	[Export] public bool CadeiaAberta = false;
 	[Export] public Character PlayerRef;
-	
+	private AudioStreamPlayer2D _Abrir;
 	
 	public override string GetCustomText()
 	{
 		return "Cadeia";
 	}
-	
+	public override string DefineSoundEffect()
+	{
+		return "Keypad";
+	}
 	public override void _Ready()
 	{
+		_Abrir = GetNode<AudioStreamPlayer2D>("Abrir");
 		base._Ready();
 	}
+	
+	public void PlayOpenSound()
+	{
+		if(_Abrir != null)
+		{
+			_Abrir.Play();
+		}
+		else
+		{
+			GD.Print("Audio 'Abrir' nao encontrado");
+		}
+	}
+	
 	
 	public void EstadoCadeia(bool estado)
 	{
@@ -41,6 +58,7 @@ public partial class Cadeia : WorldObject
 		
 		ZIndex = 0;
 		
+		PlayOpenSound();
 		//Move o Personagem para frente.
 		Tween tween = GetTree().CreateTween();
 		float novaPosicaoY = -340.0f;

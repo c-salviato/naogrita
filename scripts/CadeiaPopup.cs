@@ -8,7 +8,9 @@ public partial class CadeiaPopup : InspectPopupBase
 	// Referências
 	private HBoxContainer _displayContainer;
 	private GridContainer _botoesContainer;
-
+	private AudioStreamPlayer2D _sound;
+	
+	
 	// Armazena a senha atual que o jogador digitou (como nomes de textura ou IDs)
 	private List<string> _senhaAtual = new List<string>();
 	private readonly List<string>  _senhaCorreta = new List<string>(new string[]
@@ -24,6 +26,7 @@ public partial class CadeiaPopup : InspectPopupBase
 	
 	public override void _Ready()
 	{
+		_sound = GetNode<AudioStreamPlayer2D>("Click");
 		base._Ready(); // Chama o _Ready da classe pai (fecha botão, etc)
 		
 		// Pegamos as referências dos containers
@@ -34,6 +37,17 @@ public partial class CadeiaPopup : InspectPopupBase
 		ConectarBotoes();
 	}
 	
+	private void TocarSom()
+	{
+		if(_sound != null)
+		{
+			_sound.Play();
+		}
+		else
+		{
+			GD.Print("Deu merda patrao");
+		}
+	}
 	
 	private void ConectarBotoes()
 	{
@@ -57,6 +71,10 @@ public partial class CadeiaPopup : InspectPopupBase
 		{
 			// Opcional: Tocar um som de "Erro" ou balançar a tela
 			return;
+		}
+		else
+		{
+			TocarSom();
 		}
 
 		// 2. Adiciona visualmente no display
