@@ -21,20 +21,7 @@ public partial class CelularMundo : WorldObject
 
 		if (_uiNode != null)
 		{
-			GD.Print("------------------------------------------------");
-			GD.Print($"Encontrei o nó: {_uiNode.Name}");
-			GD.Print($"Tipo nativo: {_uiNode.GetType()}");
-			
 			var script = _uiNode.GetScript().As<Script>();
-			if (script != null)
-			{
-				GD.Print($"Script anexado: {script.ResourcePath}");
-			}
-			else
-			{
-				GD.PrintErr("O nó existe, mas NÃO TEM SCRIPT anexado no jogo rodando!");
-			}
-			GD.Print("------------------------------------------------");
 		}
 		base._Ready();
 	}

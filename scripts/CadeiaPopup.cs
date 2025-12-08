@@ -45,7 +45,7 @@ public partial class CadeiaPopup : InspectPopupBase
 		}
 		else
 		{
-			GD.Print("Deu merda patrao");
+			GD.Print("Nao foi possivel achar o 'Click'");
 		}
 	}
 	
@@ -74,15 +74,12 @@ public partial class CadeiaPopup : InspectPopupBase
 		{
 			TocarSom();
 		}
-
-
 		AdicionarImagemNoDisplay(imagemSimbolo);
-
 		_senhaAtual.Add(imagemSimbolo.ResourcePath);
 		
 		// Debug
 		GD.Print("Digitou. Total: " + _senhaAtual.Count);
-
+		
 		if (_senhaAtual.Count == MaxDigitos)
 		{
 			VerificarSenha();
