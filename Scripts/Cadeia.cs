@@ -6,6 +6,7 @@ public partial class Cadeia : WorldObject
 	[Export] public bool CadeiaAberta = false;
 	[Export] public Character PlayerRef;
 	private AudioStreamPlayer2D _Abrir;
+	private AnimatedSprite2D _cadeia;
 	
 	public override string GetCustomText()
 	{
@@ -18,6 +19,7 @@ public partial class Cadeia : WorldObject
 	public override void _Ready()
 	{
 		_Abrir = GetNode<AudioStreamPlayer2D>("Abrir");
+		_cadeia = GetNode<AnimatedSprite2D>("CadeiaSprite");
 		base._Ready();
 	}
 	
@@ -60,6 +62,7 @@ public partial class Cadeia : WorldObject
 		
 		PlayOpenSound();
 		//Move o Personagem para frente.
+		_cadeia.Play("aberta");
 		Tween tween = GetTree().CreateTween();
 		float novaPosicaoY = 20.0f;
 		float duracao = 0.5f;

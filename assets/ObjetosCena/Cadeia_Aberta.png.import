@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://od1bv4d15bcq"
-path="res://.godot/imported/notepad_Cena.png-5fb48f627ebdd20bc46805e4c7a06366.ctex"
+uid="uid://b75n8yb4odvf2"
+path="res://.godot/imported/Cadeia_Aberta.png-d30a787a0a9d596e36de785da7fcb4e6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ObjetosCena/notepad_Cena.png"
-dest_files=["res://.godot/imported/notepad_Cena.png-5fb48f627ebdd20bc46805e4c7a06366.ctex"]
+source_file="res://assets/ObjetosCena/Cadeia_Aberta.png"
+dest_files=["res://.godot/imported/Cadeia_Aberta.png-d30a787a0a9d596e36de785da7fcb4e6.ctex"]
 
 [params]
 

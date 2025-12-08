@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://dptb4nrmwmaox"]
+[gd_scene load_steps=44 format=4 uid="uid://dptb4nrmwmaox"]
 
 [ext_resource type="Script" uid="uid://l817u2bpqt1w" path="res://scenes/Main.cs" id="1_ebg2g"]
 [ext_resource type="Texture2D" uid="uid://did622qiefu88" path="res://assets/tilesets.png" id="1_jlsqs"]
@@ -12,11 +12,12 @@
 [ext_resource type="Script" uid="uid://cc6t2jqkm3yc2" path="res://Scripts/Cadeia.cs" id="6_lhr70"]
 [ext_resource type="Script" uid="uid://uqpxvnkjxrhl" path="res://Scripts/WorldObject.cs" id="6_nxtc6"]
 [ext_resource type="Texture2D" uid="uid://bmh1m5xp5f8va" path="res://assets/ObjetosCena/Cadeia_Cena.png" id="7_lhr70"]
-[ext_resource type="Texture2D" uid="uid://od1bv4d15bcq" path="res://assets/ObjetosCena/notepad_cena.png" id="7_q8u5g"]
+[ext_resource type="Texture2D" uid="uid://od1bv4d15bcq" path="res://assets/ObjetosCena/notepad_Cena.png" id="7_q8u5g"]
 [ext_resource type="PackedScene" uid="uid://dm21shoihpgv6" path="res://PreFabs/CadeiaPopup.tscn" id="7_wp0k4"]
 [ext_resource type="AudioStream" uid="uid://dlfhxnj4g867p" path="res://assets/SoundEffects/CadeiaAbrir.mp3" id="9_ft6cd"]
 [ext_resource type="AudioStream" uid="uid://cjexyongea1dm" path="res://assets/SoundEffects/KeypadOn.mp3" id="10_bb450"]
 [ext_resource type="Texture2D" uid="uid://b72egro0s6xoc" path="res://assets/ObjetosCena/comodo_sprite.png" id="12_qmy6f"]
+[ext_resource type="Texture2D" uid="uid://b75n8yb4odvf2" path="res://assets/ObjetosCena/Cadeia_Aberta.png" id="13_2ofn6"]
 [ext_resource type="Script" uid="uid://33ladhc36dic" path="res://Scripts/CelularMundo.cs" id="13_3p2gp"]
 [ext_resource type="Texture2D" uid="uid://co75v0471753n" path="res://assets/ObjetosCena/Celular.png" id="13_mwfav"]
 [ext_resource type="AudioStream" uid="uid://di8nrydvu5qo4" path="res://assets/SoundEffects/Caderno.mp3" id="15_1nqs0"]
@@ -99,6 +100,14 @@ size = Vector2(51.66667, 53.33333)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ebg2g"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_2ofn6")
+}],
+"loop": true,
+"name": &"aberta",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("7_lhr70")
