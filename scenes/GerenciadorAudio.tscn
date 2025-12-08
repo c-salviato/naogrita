@@ -1,10 +1,3 @@
-[gd_scene load_steps=2 format=3 uid="uid://duh0j41mckq0m"]
-
-[ext_resource type="AudioStream" uid="uid://1wh15k58qpjc" path="res://assets/Music/Game_FirstLevel.mp3" id="1_r7flq"]
+[gd_scene format=3 uid="uid://duh0j41mckq0m"]
 
 [node name="Node2D" type="Node2D"]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1_r7flq")
-volume_db = -20.0
-autoplay = true

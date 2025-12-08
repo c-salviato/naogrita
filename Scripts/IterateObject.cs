@@ -8,7 +8,7 @@ public partial class IterateObject : Area2D
 	public Font _defaultFont;
 	public virtual String GetCustomText()
 	{
-		return "Objeto"; // Valor default se não for sobrescrito
+		return "Objeto"; 
 	}
 	public virtual String DefineSoundEffect()
 	{
@@ -25,6 +25,13 @@ public partial class IterateObject : Area2D
 		_defaultFont = GD.Load<Font>("res://seu_caminho/sua_fonte.ttf") ?? ThemeDB.FallbackFont;
 		_mao = GD.Load<Texture2D>("res://assets/Cursor/CursorPegar.png");
 		ZIndex = 1000;
+		foreach (Node child in GetChildren())
+			{
+				if (child is CanvasItem visualItem)
+				{
+					visualItem.ShowBehindParent = true;
+				}
+			}
 		this.MouseEntered += OnMouseEntered;
 		this.MouseExited += OnMouseExited;
 		this.InputEvent += OnInputEvent;
@@ -36,11 +43,9 @@ public partial class IterateObject : Area2D
 	
 	public void PlaySound()
 	{
-		// O método Play() inicia o som a partir do início.
-		// Ele vai usar o AudioStream que você configurou no Inspetor.
+
 		_soundEffect.Play();
-		// Se você quiser que o som comece de uma posição específica, use:
-		// _soundEffect.Play(2.5f); // Começa a tocar a partir dos 2.5 segundos
+
 	}
 	
 	public override void _Process(double delta)
