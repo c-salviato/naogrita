@@ -22,7 +22,7 @@ public partial class IterateObject : Area2D
 	
 	public override void _Ready()
 	{
-		_defaultFont = GD.Load<Font>("res://seu_caminho/sua_fonte.ttf") ?? ThemeDB.FallbackFont;
+		_defaultFont = GD.Load<Font>("res://assets/Font/MayroKartRetro-Regular.ttf") ?? ThemeDB.FallbackFont;
 		_mao = GD.Load<Texture2D>("res://assets/Cursor/CursorPegar.png");
 		ZIndex = 1000;
 		foreach (Node child in GetChildren())
